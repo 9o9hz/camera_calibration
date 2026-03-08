@@ -1,0 +1,23 @@
+# BEV Measure Tool Clicked Points (ROS2)
+# topic: /image_raw
+# param_file: bev_params_7.npz
+# warp_w: 640, warp_h: 640
+# m_per_pixel_x: 0.003578125
+# m_per_pixel_y: 0.0025
+# grid_interval_m: 0.5
+
+P1: 222, 228
+P2: 455, 236
+P3: 250, 359
+P4: 327, 165
+P5: 407, 361
+P6: 224, 229
+
+# Last measurement info
+p1: (407, 361)
+p2: (224, 229)
+du: 183 px
+dv: 132 px
+dist_px: 225.639092
+est_m_per_px_x: 0.002732240
+est_m_per_px_y: 0.003787879

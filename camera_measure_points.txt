@@ -1,0 +1,23 @@
+# Camera Measure Tool Clicked Points (ROS2)
+# topic: /image_raw
+# m_per_pixel_x: 0.003578125
+# m_per_pixel_y: 0.0025
+# grid_interval_m: 0.5
+
+P1: 188, 94
+P2: 158, 213
+P3: 192, 274
+P4: 243, 277
+P5: 299, 220
+P6: 321, 150
+P7: 303, 115
+P8: 256, 128
+
+# Last measurement info
+p1: (303, 115)
+p2: (256, 128)
+du: 47 px
+dv: 13 px
+dist_px: 48.764741
+est_m_per_px_x: 0.010638298
+est_m_per_px_y: 0.038461538
