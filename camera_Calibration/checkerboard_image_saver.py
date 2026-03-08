@@ -21,7 +21,7 @@ while True:
     # 'a' 키를 누르면 프레임 캡처하여 저장
     if key == ord('a'):
         # 파일 이름에 현재 날짜와 시간을 추가하여 저장
-        filename = datetime.datetime.now().strftime("./checkerboards/capture_%Y%m%d_%H%M%S.png")
+        filename = datetime.datetime.now().strftime("/home/j/check/capture/capture_%Y%m%d_%H%M%S.png")
         cv2.imwrite(filename, frame)
         print(f"{filename} 이미지가 저장되었습니다.")
 
