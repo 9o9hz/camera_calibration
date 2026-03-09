@@ -1,34 +1,44 @@
 import cv2
 import datetime
+import os
 
-# 카메라 장치 열기
-cap = cv2.VideoCapture('/dev/video2')
+save_dir = "/home/j/check/capture"
+os.makedirs(save_dir, exist_ok=True)
 
-# 영상 캡처 루프
+cap = cv2.VideoCapture('/dev/video0')
+
+window_name = "Video"
+latest_frame = None
+
+def mouse_callback(event, x, y, flags, param):
+    global latest_frame
+
+    if event == cv2.EVENT_LBUTTONDOWN:
+        if latest_frame is not None:
+            filename = datetime.datetime.now().strftime(
+                os.path.join(save_dir, "capture_%Y%m%d_%H%M%S.png")
+            )
+            ok = cv2.imwrite(filename, latest_frame)
+            if ok:
+                print(f"{filename} 이미지가 저장되었습니다.")
+            else:
+                print("이미지 저장 실패")
+
+cv2.namedWindow(window_name)
+cv2.setMouseCallback(window_name, mouse_callback)
+
 while True:
-    # 프레임 읽기
     ret, frame = cap.read()
     if not ret:
         print("카메라에서 프레임을 가져올 수 없습니다.")
         break
 
-    # 프레임을 화면에 표시
-    cv2.imshow("Video", frame)
+    latest_frame = frame.copy()
+    cv2.imshow(window_name, frame)
 
-    # 키 입력 대기
     key = cv2.waitKey(1) & 0xFF
-
-    # 'a' 키를 누르면 프레임 캡처하여 저장
-    if key == ord('a'):
-        # 파일 이름에 현재 날짜와 시간을 추가하여 저장
-        filename = datetime.datetime.now().strftime("/home/j/check/capture/capture_%Y%m%d_%H%M%S.png")
-        cv2.imwrite(filename, frame)
-        print(f"{filename} 이미지가 저장되었습니다.")
-
-    # 'q' 키를 누르면 종료
-    elif key == ord('q'):
+    if key == ord('q'):
         break
 
-# 자원 해제
 cap.release()
 cv2.destroyAllWindows()
