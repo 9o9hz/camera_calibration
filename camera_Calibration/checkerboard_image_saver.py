@@ -5,7 +5,8 @@ import os
 save_dir = "/home/j/check/capture"
 os.makedirs(save_dir, exist_ok=True)
 
-cap = cv2.VideoCapture('/dev/video0')
+# cap = cv2.VideoCapture('/dev/video2')
+cap = cv2.VideoCapture('/dev/video2', cv2.CAP_V4L2)
 
 window_name = "Video"
 latest_frame = None
